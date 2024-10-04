@@ -4,13 +4,14 @@ let books = [
     {id: 3, titre: "titre3", auteur: "auteur3", prix: 34}
 ];
 
-let action = 'ajout'; 
-let bookNum = -1;
+let cAction = 'ajout';
+let bookNum = -1; 
 
 function show(action = 'ajout', index = -1) {
-    action = action;
+    cAction = action;
     bookNum = index;
     document.getElementById("form").style.display = 'flex';
+
     if (action === 'mod' && index !== -1) {
         const book = books[index];
         document.getElementById("id").value = book.id;
@@ -27,16 +28,15 @@ function show(action = 'ajout', index = -1) {
     }
 }
 
-
 function save() {
     const id = parseInt(document.getElementById("id").value);
     const titre = document.getElementById("tit").value;
     const auteur = document.getElementById("aut").value;
     const prix = parseInt(document.getElementById("prix").value);
 
-    if (action === 'ajout') {
+    if (cAction === 'ajout') {
         books.push({id: id, titre: titre, auteur: auteur, prix: prix});
-    } else if (action === 'mod' && bookNum !== -1) {
+    } else if (cAction === 'mod' && bookNum !== -1) {
         books[bookNum] = {id: id, titre: titre, auteur: auteur, prix: prix};
     }
 
